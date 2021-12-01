@@ -1,4 +1,3 @@
-gitusing System;
 using UnityEngine;
 using UnityEngine.UI;
 
