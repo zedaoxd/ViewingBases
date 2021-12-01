@@ -17,8 +17,9 @@ public class ViewingBases : MonoBehaviour
         Gizmos.color = Color.red;
         GizmosUtils.DrawVectorAtOrigin(i);
         Gizmos.color = Color.yellow;
-        GizmosUtils.DrawVectorAtOrigin(CalculatePoint(X, i, Y, j));
-        UpdateTextArea();
+        var point = CalculatePoint(X, i, Y, j);
+        GizmosUtils.DrawVectorAtOrigin(point);
+        UpdateTextArea(point);
     }
     
     private Vector2 CalculatePoint(float scaler1, Vector2 point1, float scaler2, Vector2 point2)
@@ -26,9 +27,9 @@ public class ViewingBases : MonoBehaviour
         return scaler1 * point1 + scaler2 * point2;
     }
 
-    private void UpdateTextArea()
+    private void UpdateTextArea(Vector2 point)
     {
-        textArea.text = $"v = ({X}, {Y})\n" +
+        textArea.text = $"v = ({point.x}, {point.y})\n" +
                         $"i = ({i.x}, {i.y})\n" +
                         $"j = ({j.x}, {j.y})\n" +
                         $"LD = {AreLinearDependent(i, j)}";
